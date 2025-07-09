@@ -1,0 +1,59 @@
+class node
+ {
+     int data;
+     node left,right;
+     node(int value)
+     {
+         data=value;
+         left=right=null;
+     }
+ }
+ class Main
+ {
+     node root;
+     node insert(node node,int value)
+     {
+         if(node==null)
+         {
+             return new node (value);
+         }
+         if(value<node.data)
+         {
+             node.left=insert(node.left,value);
+         }
+         else if(value>node.data)
+         {
+             node.right=insert(node.right,value);
+         }
+         return node;
+     }
+     void inorder (node node)
+     {
+         if(node!=null)
+         {
+             inorder(node.left);
+             System.out.println(node.data+" ");
+             inorder(node.right);
+         }
+     }
+     public static void main(String[]args)
+     {
+         Main tree=new Main();
+         int[]value={5,4,3,2,1,0,6};
+         for(int values:value)
+         {
+             tree.root=tree.insert(tree.root,values);
+         }
+         System.out.println("Inorder Traversal");
+         tree.inorder(tree.root);
+     }
+ }
+
+Output :
+Inorder Traversal
+0 
+1 
+2 
+3 
+4 
+5 
